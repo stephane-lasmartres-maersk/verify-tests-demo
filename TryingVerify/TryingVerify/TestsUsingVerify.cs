@@ -13,13 +13,14 @@ namespace TryingVerify
 
         public TestsUsingVerify()
         {
-            _settings.DisableDiff();    // disable using a diff tool. we will use git as diff tool
+            //_settings.DisableDiff();    // disable using a diff tool. we will use git as diff tool
 
             _settings.ModifySerialization(settings => 
             {
                 settings.AddExtraSettings(_ =>
                 {
                     _.DefaultValueHandling = DefaultValueHandling.Include;
+                    _.NullValueHandling = NullValueHandling.Ignore;
                 });
                 settings.DontScrubNumericIds();
                 settings.DontScrubDateTimes();
@@ -27,6 +28,12 @@ namespace TryingVerify
             });
 
             VerifierSettings.UseStrictJson();
+
+            // by default any difference will make the verification failing.
+            // want to capture the difference using source control?
+            // call AutoVerify(). Any verification failure will not throw an exception.
+            // Instead test will pass and we will see difference in source control
+            _settings.AutoVerify(); 
         }
 
         [Fact]

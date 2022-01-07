@@ -7,5 +7,6 @@
         public DateTime ReleaseDate { get; set; }
         public decimal Budget { get; set; }
         public List<string> Starring { get; set; }
+        public List<string> Directors { get; set; }
     }
 }

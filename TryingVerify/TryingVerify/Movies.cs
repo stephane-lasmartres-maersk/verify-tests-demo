@@ -19,6 +19,10 @@
                         "Adam Scott",
                         "Kathryn Hahn",
                         "Sean Penn"
+                    },
+                    Directors = new List<string>
+                    {
+                        "Ben Stiller"
                     }
                 },
                 new Movie
