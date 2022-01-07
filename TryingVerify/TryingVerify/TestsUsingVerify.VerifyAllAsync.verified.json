@@ -1,0 +1,29 @@
+﻿[
+  {
+    "Id": "a5eaae6f-e0bc-4fd4-b120-8dedf32adeb5",
+    "Title": "The Secret Life of Walter Mitty",
+    "ReleaseDate": "2013-10-05",
+    "Budget": 90000000.0,
+    "Starring": [
+      "Ben Stiller",
+      "Kristen Wiig",
+      "Shirley MacLaine",
+      "Adam Scott",
+      "Kathryn Hahn",
+      "Sean Penn"
+    ]
+  },
+  {
+    "Id": "91287e2d-ca7c-48c5-95d0-43ebcd77a817",
+    "Title": "Star Wars: The Rise of Skywalker",
+    "ReleaseDate": "2019-12-16",
+    "Budget": 275000000.0,
+    "Starring": [
+      "Carrie Fisher",
+      "Mark Hamill",
+      "Adam Driver",
+      "Daisy Ridley",
+      "John Boyega"
+    ]
+  }
+]
