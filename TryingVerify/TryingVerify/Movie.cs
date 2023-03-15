@@ -8,5 +8,6 @@
         public decimal Budget { get; set; }
         public List<string> Starring { get; set; }
         public List<string> Directors { get; set; }
+        public int Points { get; set; } = 10;
     }
 }

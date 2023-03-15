@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using Argon;
 using VerifyTests;
 using VerifyXunit;
 using Xunit;
@@ -14,17 +14,27 @@ namespace TryingVerify
         {
             //_settings.DisableDiff();    // disable using a diff tool. we will use git as diff tool
 
-            _settings.ModifySerialization(settings => 
+
+            //_settings.ModifySerialization(settings => 
+            //{
+            //    settings.AddExtraSettings(_ =>
+            //    {
+            //        _.DefaultValueHandling = DefaultValueHandling.Include;
+            //        _.NullValueHandling = NullValueHandling.Ignore;
+            //    });
+            //    //settings.DontScrubNumericIds();
+            //    //settings.DontScrubDateTimes();
+            //    //settings.DontScrubGuids();
+            //});
+
+
+            _settings.AddExtraSettings(_ =>
             {
-                settings.AddExtraSettings(_ =>
-                {
-                    _.DefaultValueHandling = DefaultValueHandling.Include;
-                    _.NullValueHandling = NullValueHandling.Ignore;
-                });
-                settings.DontScrubNumericIds();
-                settings.DontScrubDateTimes();
-                settings.DontScrubGuids();
+                _.DefaultValueHandling = DefaultValueHandling.Include;
+                _.NullValueHandling = NullValueHandling.Ignore;
             });
+            _settings.DontScrubDateTimes();
+            _settings.DontScrubGuids();
 
             VerifierSettings.UseStrictJson();
 
