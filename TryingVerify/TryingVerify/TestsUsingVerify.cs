@@ -28,19 +28,8 @@ namespace TryingVerify
 
             VerifierSettings.UseStrictJson();
 
-            // by default any difference will make the verification failing.
-            // want to capture the difference using source control?
-            // call AutoVerify(). Any verification failure will not throw an exception.
-            // Instead test will pass and we will see difference in source control
-            _settings.AutoVerify(); 
-        }
-
-        [Fact]
-        public async Task VerifyFirstOneAsync()
-        {
-            var first = Movies.Get().First();
-
-            await Verifier.Verify(first, _settings);
+            // need to understand how it behaves when AutoVerify is on
+            //_settings.AutoVerify(); 
         }
 
         [Fact]

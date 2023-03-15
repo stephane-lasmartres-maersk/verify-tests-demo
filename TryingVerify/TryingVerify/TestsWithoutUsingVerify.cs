@@ -5,26 +5,6 @@ namespace TryingVerify
     public class TestsWithoutUsingVerify
     {
         [Fact]
-        public void VerifyFirstOne()
-        {
-            var first = Movies.Get().First();
-
-            Assert.Equal("a5eaae6f-e0bc-4fd4-b120-8dedf32adeb5", first.Id.ToString());
-            Assert.Equal(90_000_000, first.Budget);
-            Assert.Equal(new DateTime(2013, 10, 5), first.ReleaseDate);
-            Assert.Equal("The Secret Life of Walter Mitty", first.Title);
-
-            Assert.Collection(first.Starring,
-                item => Assert.Equal("Ben Stiller", item),
-                item => Assert.Equal("Kristen Wiig", item),
-                item => Assert.Equal("Shirley MacLaine", item),
-                item => Assert.Equal("Adam Scott", item),
-                item => Assert.Equal("Kathryn Hahn", item),
-                item => Assert.Equal("Sean Penn", item)
-            );
-        }
-
-        [Fact]
         public void VerifyAll()
         {
             var all = Movies.Get();
