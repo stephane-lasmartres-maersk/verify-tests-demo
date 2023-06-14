@@ -9,5 +9,6 @@
         public List<string> Starring { get; set; }
         public List<string> Directors { get; set; }
         public int Points { get; set; } = 10;
+        public string Status { get; set; }
     }
 }

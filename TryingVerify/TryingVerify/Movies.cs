@@ -23,7 +23,8 @@
                     Directors = new List<string>
                     {
                         "Ben Stiller"
-                    }
+                    },
+                    Status = "Pre-production"
                 },
                 new Movie
                 {
