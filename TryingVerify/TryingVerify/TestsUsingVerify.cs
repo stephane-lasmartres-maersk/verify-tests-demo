@@ -1,53 +1,45 @@
 ﻿using Argon;
-using VerifyTests;
-using VerifyXunit;
-using Xunit;
 
-namespace TryingVerify
+namespace TryingVerify;
+
+[UsesVerify]
+public class TestsUsingVerify
 {
-    [UsesVerify]
-    public class TestsUsingVerify
+    VerifySettings _settings = new VerifySettings();
+
+    public TestsUsingVerify()
     {
-        VerifySettings _settings = new VerifySettings();
+        //_settings.DisableDiff();    // disable using a diff tool. we will use git as diff tool
+        //_settings.ModifySerialization(settings => 
+        //{
+        //    settings.AddExtraSettings(_ =>
+        //    {
+        //        _.DefaultValueHandling = DefaultValueHandling.Include;
+        //        _.NullValueHandling = NullValueHandling.Ignore;
+        //    });
+        //    //settings.DontScrubNumericIds();
+        //    //settings.DontScrubDateTimes();
+        //    //settings.DontScrubGuids();
+        //});
+        // need to understand how it behaves when AutoVerify is on
+        //_settings.AutoVerify(); 
 
-        public TestsUsingVerify()
+        _settings.AddExtraSettings(_ =>
         {
-            //_settings.DisableDiff();    // disable using a diff tool. we will use git as diff tool
+            _.DefaultValueHandling = DefaultValueHandling.Include;
+            _.NullValueHandling = NullValueHandling.Ignore;
+        });
+        _settings.DontScrubDateTimes();
+        _settings.DontScrubGuids();
 
+        VerifierSettings.UseStrictJson();
+    }
 
-            //_settings.ModifySerialization(settings => 
-            //{
-            //    settings.AddExtraSettings(_ =>
-            //    {
-            //        _.DefaultValueHandling = DefaultValueHandling.Include;
-            //        _.NullValueHandling = NullValueHandling.Ignore;
-            //    });
-            //    //settings.DontScrubNumericIds();
-            //    //settings.DontScrubDateTimes();
-            //    //settings.DontScrubGuids();
-            //});
+    [Fact]
+    public async Task VerifyAllAsync()
+    {
+        var all = Movies.Get();
 
-
-            _settings.AddExtraSettings(_ =>
-            {
-                _.DefaultValueHandling = DefaultValueHandling.Include;
-                _.NullValueHandling = NullValueHandling.Ignore;
-            });
-            _settings.DontScrubDateTimes();
-            _settings.DontScrubGuids();
-
-            VerifierSettings.UseStrictJson();
-
-            // need to understand how it behaves when AutoVerify is on
-            //_settings.AutoVerify(); 
-        }
-
-        [Fact]
-        public async Task VerifyAllAsync()
-        {
-            var all = Movies.Get();
-
-            await Verifier.Verify(all, _settings);
-        }
+        await Verifier.Verify(all, _settings);
     }
 }
